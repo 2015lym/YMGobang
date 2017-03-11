@@ -43,8 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func toMainController() {
-        self.window?.rootViewController = MainViewController()
+        let nvc = UINavigationController(rootViewController : MainViewController())
+        UINavigationBar.appearance().barTintColor = UIColor.cyan
+        nvc.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont.systemFont(ofSize: 17)]
+        self.window?.rootViewController = nvc
     }
+    
+
     
 }
 
