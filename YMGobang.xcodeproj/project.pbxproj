@@ -20,6 +20,7 @@
 		3880FD561E728E51002A2126 /* YMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3880FD551E728E51002A2126 /* YMButton.swift */; };
 		38B33AB31E73988600AA34CA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B33AB21E73988600AA34CA /* GameViewController.swift */; };
 		38B33AB71E7398CA00AA34CA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B33AB61E7398CA00AA34CA /* SettingViewController.swift */; };
+		38FCDBBD1E762D57007BFCF4 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FCDBBC1E762D57007BFCF4 /* GameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		3880FD551E728E51002A2126 /* YMButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMButton.swift; sourceTree = "<group>"; };
 		38B33AB21E73988600AA34CA /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		38B33AB61E7398CA00AA34CA /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		38FCDBBC1E762D57007BFCF4 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				38B33AB21E73988600AA34CA /* GameViewController.swift */,
+				38FCDBBC1E762D57007BFCF4 /* GameView.swift */,
 			);
 			path = 3.GamePage;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				3880FD071E728724002A2126 /* ViewController.swift in Sources */,
 				3880FD511E728994002A2126 /* StartViewController.swift in Sources */,
 				38B33AB71E7398CA00AA34CA /* SettingViewController.swift in Sources */,
+				38FCDBBD1E762D57007BFCF4 /* GameView.swift in Sources */,
 				3880FD051E728724002A2126 /* AppDelegate.swift in Sources */,
 				3880FD561E728E51002A2126 /* YMButton.swift in Sources */,
 				3880FD4F1E728928002A2126 /* BaseViewController.swift in Sources */,

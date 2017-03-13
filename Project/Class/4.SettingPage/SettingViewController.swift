@@ -59,11 +59,9 @@ class SettingViewController: BaseViewController {
     
     func setChooseButton(titleArr: NSArray) {
         grayView.isHidden = false
-        
+
         for buttonTitle in titleArr {
             print(buttonTitle)
-            
-
             
         }
         
