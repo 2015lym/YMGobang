@@ -20,9 +20,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white;
         navigationItem.hidesBackButton = true
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"返回键"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(toLastViewController))
         navigationItem.leftBarButtonItem?.tintColor = UIColor.white
-
     }
 
     override func didReceiveMemoryWarning() {

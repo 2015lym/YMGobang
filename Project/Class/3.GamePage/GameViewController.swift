@@ -16,11 +16,19 @@ class GameViewController: BaseViewController {
         let gameView = GameView()
         gameView.frame = CGRect(origin: CGPoint(x: 15, y: 100), size: CGSize(width: SCREEN_WIDTH - 30, height: SCREEN_WIDTH - 30))
         view.addSubview(gameView)
-
+     
+        let toMainPageButton = YMButton()
+        toMainPageButton.setTitle("返回", for: UIControlState.normal)
+        toMainPageButton.frame = CGRect(origin: CGPoint(x:SCREEN_WIDTH/2 - 100, y: 100 + SCREEN_WIDTH) , size: CGSize(width: 200, height: 45))
+        toMainPageButton.addTarget(self, action: #selector(returnToMainPage), for: UIControlEvents.touchUpInside)
+        view.addSubview(toMainPageButton)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
+    func returnToMainPage() {
+        _ = navigationController?.popViewController(animated: true)
+    }
 }
