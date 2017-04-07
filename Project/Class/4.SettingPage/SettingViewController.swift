@@ -14,15 +14,21 @@ class SettingViewController: BaseViewController {
         super.viewDidLoad()
         title = "设置"
         
+        var retract = UserDefaults.standard.string(forKey: "retract")
+        retract = retract == nil ? "开" : retract
+        
+        var level = UserDefaults.standard.string(forKey: "level")
+        level = level == nil ? "低" : level
+        
         let openRegretButton = YMButton()
-        openRegretButton.setTitle("开启悔棋：开", for: UIControlState.normal)
+        openRegretButton.setTitle("开启悔棋：" + retract!, for: UIControlState.normal)
         openRegretButton.tag = 100001
         openRegretButton.frame = CGRect(origin: CGPoint(x: SCREEN_WIDTH/2 - 100, y: 150) , size: CGSize(width: 200, height: 45))
         openRegretButton.addTarget(self, action:#selector(settingEnvironment), for: UIControlEvents.touchUpInside)
         view.addSubview(openRegretButton)
         
         let computerLevelButton = YMButton()
-        computerLevelButton.setTitle("人机难度：低", for: UIControlState.normal)
+        computerLevelButton.setTitle("人机难度：" + level!, for: UIControlState.normal)
         computerLevelButton.tag = 100002
         computerLevelButton.frame = CGRect(origin: CGPoint(x: SCREEN_WIDTH/2 - 100, y: 240) , size: CGSize(width: 200, height: 45))
         computerLevelButton.addTarget(self, action: #selector(settingEnvironment), for: UIControlEvents.touchUpInside)
@@ -70,8 +76,10 @@ class SettingViewController: BaseViewController {
                 let btn = self.view.viewWithTag(buttonTag) as! YMButton
                 if buttonTag == 100001 {
                     btn.setTitle("开启悔棋："+tempTitle, for: UIControlState.normal)
+                    UserDefaults.standard.set(tempTitle, forKey: "retract")
                 } else {
                     btn.setTitle("人机难度："+tempTitle, for: UIControlState.normal)
+                    UserDefaults.standard.set(tempTitle, forKey: "level")
                 }
             })
             alertController.addAction(action)
