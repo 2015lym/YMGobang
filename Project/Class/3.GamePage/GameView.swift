@@ -18,7 +18,7 @@ class GameView: UIView {
         backgroundColor = UIColor.green
     }
     
-    
+    //绘制棋盘
     override func draw(_ rect: CGRect) {
         super.draw(rect)
 
@@ -28,7 +28,7 @@ class GameView: UIView {
         
         context?.setLineWidth(1.0)
         
-        
+        //横线
         for i in 0..<chessPiecesNumber {
             
             context?.move(to: CGPoint(x: 10, y: 10 + gameViewSize / Double(chessPiecesNumber - 1) * Double(i)))
@@ -37,6 +37,7 @@ class GameView: UIView {
             context?.strokePath()
         }
 
+        //竖线
         for i in 0..<chessPiecesNumber {
             
             context?.move(to: CGPoint(x: 10 + gameViewSize / Double(chessPiecesNumber - 1) * Double(i), y: 10))
@@ -45,6 +46,30 @@ class GameView: UIView {
             context?.strokePath()
         }
         
+        //增加点击手势
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapBoard)))
+    }
+    
+    func tapBoard(tap: UITapGestureRecognizer) {
+        
+        let point = tap .location(in: tap.view)
+        
+        addSubview(createChess(point: point))
+        
+        print(point)
+        
+    }
+    
+    func createChess(point: CGPoint) -> UIView {
+        let chessView = UIView()
+        
+        let chessSize = Double(frame.size.width - 20) / Double(chessPiecesNumber)
+        
+        chessView.frame = CGRect(origin: CGPoint(x:point.x, y: point.y) , size: CGSize(width: chessSize, height: chessSize))
+        chessView.backgroundColor = UIColor.black
+        chessView.layer.cornerRadius = chessView.frame.size.width / 2
+
+        return chessView
     }
     
 }
