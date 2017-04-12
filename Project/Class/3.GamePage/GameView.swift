@@ -28,7 +28,7 @@ class GameView: UIView {
         
         context?.setLineWidth(1.0)
         
-        //横线
+        //绘制10条横线
         for i in 0..<chessPiecesNumber {
             
             context?.move(to: CGPoint(x: 10, y: 10 + gameViewSize / Double(chessPiecesNumber - 1) * Double(i)))
@@ -37,7 +37,7 @@ class GameView: UIView {
             context?.strokePath()
         }
 
-        //竖线
+        //绘制10条竖线
         for i in 0..<chessPiecesNumber {
             
             context?.move(to: CGPoint(x: 10 + gameViewSize / Double(chessPiecesNumber - 1) * Double(i), y: 10))

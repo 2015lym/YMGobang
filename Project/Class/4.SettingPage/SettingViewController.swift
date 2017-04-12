@@ -14,12 +14,14 @@ class SettingViewController: BaseViewController {
         super.viewDidLoad()
         title = "设置"
         
+        //UserDefaults获取默认配置信息
         var retract = UserDefaults.standard.string(forKey: "retract")
         retract = retract == nil ? "开" : retract
         
         var level = UserDefaults.standard.string(forKey: "level")
         level = level == nil ? "低" : level
         
+        //悔棋功能设置
         let openRegretButton = YMButton()
         openRegretButton.setTitle("开启悔棋：" + retract!, for: UIControlState.normal)
         openRegretButton.tag = 100001
@@ -27,6 +29,7 @@ class SettingViewController: BaseViewController {
         openRegretButton.addTarget(self, action:#selector(settingEnvironment), for: UIControlEvents.touchUpInside)
         view.addSubview(openRegretButton)
         
+        //人机难度设置
         let computerLevelButton = YMButton()
         computerLevelButton.setTitle("人机难度：" + level!, for: UIControlState.normal)
         computerLevelButton.tag = 100002
@@ -34,6 +37,7 @@ class SettingViewController: BaseViewController {
         computerLevelButton.addTarget(self, action: #selector(settingEnvironment), for: UIControlEvents.touchUpInside)
         view.addSubview(computerLevelButton)
         
+        //返回按钮
         let toMainPageButton = YMButton()
         toMainPageButton.setTitle("返回", for: UIControlState.normal)
         toMainPageButton.frame = CGRect(origin: CGPoint(x:SCREEN_WIDTH/2 - 100, y: 330) , size: CGSize(width: 200, height: 45))
@@ -50,6 +54,7 @@ class SettingViewController: BaseViewController {
         
     }
     
+    //悔棋功能和人机难度设置功能，通过tag值区分
     func settingEnvironment(btn: UIButton) {
         
         if btn.tag == 100001 {
@@ -60,10 +65,11 @@ class SettingViewController: BaseViewController {
 
     }
     
-    func returnToMainPage() {
-        _ = navigationController?.popViewController(animated: true)
-    }
-    
+    /*
+     *  弹出选择框
+     *
+     *  选择后 -> 修改按钮上显示的文字 -> 使用UserDefaults保存配置信息
+     */
     func setChooseButton(titleArr: NSArray, buttonTag: Int) {
 
         let alertController = UIAlertController(title:"请选择", message:nil, preferredStyle: UIAlertControllerStyle.actionSheet)
@@ -87,6 +93,10 @@ class SettingViewController: BaseViewController {
         
         present(alertController, animated: true, completion:nil)
         
+    }
+    
+    func returnToMainPage() {
+        _ = navigationController?.popViewController(animated: true)
     }
 }
 
