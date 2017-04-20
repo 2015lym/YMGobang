@@ -24,6 +24,7 @@ class GameViewController: BaseViewController {
         toMainPageButton.frame = CGRect(origin: CGPoint(x:SCREEN_WIDTH/2 - 100, y: 100 + SCREEN_WIDTH) , size: CGSize(width: 200, height: 45))
         toMainPageButton.addTarget(self, action: #selector(returnToMainPage), for: UIControlEvents.touchUpInside)
         view.addSubview(toMainPageButton)
+
     }
 
     override func didReceiveMemoryWarning() {
