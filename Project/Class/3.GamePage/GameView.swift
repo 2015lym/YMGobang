@@ -22,8 +22,8 @@ class GameView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
 
-        let gameViewSize = Double(frame.size.width - 20)
-        
+        let gameViewSize = Double(frame.size.width - 40)
+        let intervalSize = gameViewSize / Double(chessPiecesNumber - 1)
         let context = UIGraphicsGetCurrentContext()
         
         context?.setLineWidth(1.0)
@@ -31,8 +31,11 @@ class GameView: UIView {
         //绘制10条横线
         for i in 0..<chessPiecesNumber {
             
-            context?.move(to: CGPoint(x: 10, y: 10 + gameViewSize / Double(chessPiecesNumber - 1) * Double(i)))
-            context?.addLine(to: CGPoint(x: gameViewSize + 10, y: 10 + gameViewSize / Double(chessPiecesNumber - 1) * Double(i)))
+            context?.move(to: CGPoint(x: 20,
+                                      y: 20 + intervalSize * Double(i)))
+            
+            context?.addLine(to: CGPoint(x: gameViewSize + 20,
+                                         y: 20 + intervalSize * Double(i)))
             
             context?.strokePath()
         }
@@ -40,8 +43,8 @@ class GameView: UIView {
         //绘制10条竖线
         for i in 0..<chessPiecesNumber {
             
-            context?.move(to: CGPoint(x: 10 + gameViewSize / Double(chessPiecesNumber - 1) * Double(i), y: 10))
-            context?.addLine(to: CGPoint(x: 10 + gameViewSize / Double(chessPiecesNumber - 1) * Double(i), y: gameViewSize + 10))
+            context?.move(to: CGPoint(x: 20 + intervalSize * Double(i), y: 20))
+            context?.addLine(to: CGPoint(x: 20 + intervalSize * Double(i), y: gameViewSize + 20))
             
             context?.strokePath()
         }
@@ -50,22 +53,37 @@ class GameView: UIView {
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapBoard)))
     }
     
+    //点击手势
     func tapBoard(tap: UITapGestureRecognizer) {
         
         let point = tap .location(in: tap.view)
+        let gameViewSize = Double(frame.size.width - 40)
+        if point.x < 20 || point.y < 20 ||
+            point.x > CGFloat(gameViewSize + 20) || point.y > CGFloat(gameViewSize + 20) {
+            return
+        }
         
         addSubview(createChess(point: point))
         
-        print(point)
-        
     }
     
+    //根据手指落点，生成棋子
     func createChess(point: CGPoint) -> UIView {
         let chessView = UIView()
         
-        let chessSize = Double(frame.size.width - 20) / Double(chessPiecesNumber)
+        let chessSize = Double(frame.size.width - 60) / Double(chessPiecesNumber)
+        let intervalSize = Double(frame.size.width - 40) / Double(chessPiecesNumber - 1)
+        print(Double(point.x)/intervalSize)
+        print(lroundf(Float(Double(point.x)/intervalSize)))
         
-        chessView.frame = CGRect(origin: CGPoint(x:point.x, y: point.y) , size: CGSize(width: chessSize, height: chessSize))
+        let chessX = Double(lroundf(Float(Double(point.x - 20)/intervalSize))) * intervalSize
+        let chessY = Double(lroundf(Float(Double(point.y - 20)/intervalSize))) * intervalSize
+        
+        
+        chessView.frame = CGRect(origin: CGPoint(x: CGFloat(chessX) - CGFloat(chessSize/2) + 20,
+                                                 y: CGFloat(chessY) - CGFloat(chessSize/2) + 20),
+                                   size: CGSize(width: chessSize,
+                                                height: chessSize))
         chessView.backgroundColor = UIColor.black
         chessView.layer.cornerRadius = chessView.frame.size.width / 2
 
