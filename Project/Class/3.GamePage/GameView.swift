@@ -12,7 +12,7 @@ class GameView: UIView {
 
     //棋盘格数，可修改此参数定制棋盘大小
     let chessPiecesNumber = 10
-    
+    var chessColor = 0
     override func layoutSubviews() {
         super.layoutSubviews()
         backgroundColor = UIColor.green
@@ -84,7 +84,14 @@ class GameView: UIView {
                                                  y: CGFloat(chessY) - CGFloat(chessSize/2) + 20),
                                    size: CGSize(width: chessSize,
                                                 height: chessSize))
-        chessView.backgroundColor = UIColor.black
+        if chessColor == 0 {
+            chessView.backgroundColor = UIColor.black
+            chessColor = 1
+        } else {
+            chessView.backgroundColor = UIColor.white
+            chessColor = 0
+        }
+        
         chessView.layer.cornerRadius = chessView.frame.size.width / 2
 
         return chessView
