@@ -12,7 +12,13 @@ class GameView: UIView {
 
     //棋盘格数，可修改此参数定制棋盘大小
     let chessPiecesNumber = 10
-    var chessColor = 0
+    var chessColorNumber = 1
+    
+    //二维数组初始化的两种方式
+    var chessArray = Array<Array<Int>>()
+    var blackChessArray = Array<Array<Int>>()
+    var whiteChessArray = [[Int]]()
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         backgroundColor = UIColor.green
@@ -58,43 +64,55 @@ class GameView: UIView {
         
         let point = tap .location(in: tap.view)
         let gameViewSize = Double(frame.size.width - 40)
-        if point.x < 20 || point.y < 20 ||
-            point.x > CGFloat(gameViewSize + 20) || point.y > CGFloat(gameViewSize + 20) {
+        if point.x < 20 ||
+            point.y < 20 ||
+            point.x > CGFloat(gameViewSize + 20) ||
+            point.y > CGFloat(gameViewSize + 20) {
             return
         }
         
-        addSubview(createChess(point: point))
+        createChess(point: point)
         
     }
     
     //根据手指落点，生成棋子
-    func createChess(point: CGPoint) -> UIView {
+    func createChess(point: CGPoint) {
         let chessView = UIView()
         
         let chessSize = Double(frame.size.width - 60) / Double(chessPiecesNumber)
         let intervalSize = Double(frame.size.width - 40) / Double(chessPiecesNumber - 1)
-        print(Double(point.x)/intervalSize)
-        print(lroundf(Float(Double(point.x)/intervalSize)))
+//        print(Double(point.x)/intervalSize)
+//        print(lroundf(Float(Double(point.x)/intervalSize)))
         
         let chessX = Double(lroundf(Float(Double(point.x - 20)/intervalSize))) * intervalSize
         let chessY = Double(lroundf(Float(Double(point.y - 20)/intervalSize))) * intervalSize
-        
         
         chessView.frame = CGRect(origin: CGPoint(x: CGFloat(chessX) - CGFloat(chessSize/2) + 20,
                                                  y: CGFloat(chessY) - CGFloat(chessSize/2) + 20),
                                    size: CGSize(width: chessSize,
                                                 height: chessSize))
-        if chessColor == 0 {
-            chessView.backgroundColor = UIColor.black
-            chessColor = 1
-        } else {
-            chessView.backgroundColor = UIColor.white
-            chessColor = 0
-        }
         
         chessView.layer.cornerRadius = chessView.frame.size.width / 2
-
-        return chessView
+        
+        let locationX = Int(chessX / intervalSize)
+        let locationY = Int(chessY / intervalSize)
+        
+//        if chessArray[locationX][locationY] != 0 {
+//            print("有棋子了")
+//            return
+//        } else {
+        
+//            chessArray[locationX][locationY] = chessColorNumber
+        
+            if chessColorNumber == 1 {
+                chessView.backgroundColor = UIColor.black
+                chessColorNumber = 2
+            } else {
+                chessView.backgroundColor = UIColor.white
+                chessColorNumber = 1
+            }
+//        }
+        addSubview(chessView)
     }
-    
+
 }
