@@ -94,8 +94,8 @@ class GameView: UIView {
         
         chessView.layer.cornerRadius = chessView.frame.size.width / 2
         
-        let locationX = Int(chessX / intervalSize)
-        let locationY = Int(chessY / intervalSize)
+//        let locationX = Int(chessX / intervalSize)
+//        let locationY = Int(chessY / intervalSize)
         
 //        if chessArray[locationX][locationY] != 0 {
 //            print("有棋子了")
