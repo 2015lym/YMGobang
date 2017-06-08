@@ -81,8 +81,6 @@ class GameView: UIView {
         
         let chessSize = Double(frame.size.width - 60) / Double(chessPiecesNumber)
         let intervalSize = Double(frame.size.width - 40) / Double(chessPiecesNumber - 1)
-//        print(Double(point.x)/intervalSize)
-//        print(lroundf(Float(Double(point.x)/intervalSize)))
         
         let chessX = Double(lroundf(Float(Double(point.x - 20)/intervalSize))) * intervalSize
         let chessY = Double(lroundf(Float(Double(point.y - 20)/intervalSize))) * intervalSize
@@ -94,14 +92,16 @@ class GameView: UIView {
         
         chessView.layer.cornerRadius = chessView.frame.size.width / 2
         
-//        let locationX = Int(chessX / intervalSize)
-//        let locationY = Int(chessY / intervalSize)
+        let locationX = Int(Double(CGFloat(chessX) - CGFloat(chessSize/2) + 20) / intervalSize)
+        let locationY = Int(Double(CGFloat(chessY) - CGFloat(chessSize/2) + 20) / intervalSize)
+        print("x", locationX, "y",locationY)
         
+//        chessArray[locationX][locationY] = chessColorNumber
 //        if chessArray[locationX][locationY] != 0 {
 //            print("有棋子了")
 //            return
 //        } else {
-        
+//        
 //            chessArray[locationX][locationY] = chessColorNumber
         
             if chessColorNumber == 1 {
