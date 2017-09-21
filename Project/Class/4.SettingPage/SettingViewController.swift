@@ -55,7 +55,7 @@ class SettingViewController: BaseViewController {
     }
     
     //悔棋功能和人机难度设置功能，通过tag值区分
-    func settingEnvironment(btn: UIButton) {
+    @objc func settingEnvironment(btn: UIButton) {
         
         if btn.tag == 100001 {
             setChooseButton(titleArr: ["开", "关"], buttonTag: 100001)
@@ -95,7 +95,7 @@ class SettingViewController: BaseViewController {
         
     }
     
-    func returnToMainPage() {
+    @objc func returnToMainPage() {
         _ = navigationController?.popViewController(animated: true)
     }
 }

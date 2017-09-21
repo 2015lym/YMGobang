@@ -31,7 +31,7 @@ class GameViewController: BaseViewController {
         super.didReceiveMemoryWarning()
     }
 
-    func returnToMainPage() {
+    @objc func returnToMainPage() {
         _ = navigationController?.popViewController(animated: true)
     }
 }

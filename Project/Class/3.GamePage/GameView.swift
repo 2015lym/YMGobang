@@ -60,7 +60,7 @@ class GameView: UIView {
     }
     
     //点击手势
-    func tapBoard(tap: UITapGestureRecognizer) {
+    @objc func tapBoard(tap: UITapGestureRecognizer) {
         
         let point = tap .location(in: tap.view)
         let gameViewSize = Double(frame.size.width - 40)

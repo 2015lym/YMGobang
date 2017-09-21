@@ -39,15 +39,15 @@ class MainViewController: BaseViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func startPVPGame() {
+    @objc func startPVPGame() {
         toGameViewController(titleStr: "双人游戏")
     }
     
-    func startPVCGame() {
+    @objc func startPVCGame() {
         toGameViewController(titleStr: "人机对战")
     }
     
-    func setGameEnvironment() {
+    @objc func setGameEnvironment() {
         let vc = SettingViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
